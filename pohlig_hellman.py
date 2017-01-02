@@ -73,8 +73,8 @@ def CongruencePair(g, h, p, q, e, e1, e2):
     return (x, q ** e)
 
 def PrintFormated(arg1, arg2, arg3, arg4, arg5):
-    print " {:2s} | {:2s} | {:13s} | {:13s} | {:45s}".format(str(arg1), str(arg2), str(arg3), str(arg4), str(arg5))
-    print("-"*88)
+    print " {:3s} | {:3s} | {:13s} | {:13s} | {:45s}".format(str(arg1), str(arg2), str(arg3), str(arg4), str(arg5))
+    print("-"*90)
 
 def PohlingHellman(g, h, p):
     """Main function of Pohling-Hellman's algorithm"""
@@ -83,9 +83,9 @@ def PohlingHellman(g, h, p):
     CongruenceList = []
 
     print("\n")
-    print("-"*88)
+    print("-"*90)
     print(" Solving %d ≡ %d^x (mod %d)" % (g, h, p))
-    print("-"*88)
+    print("-"*90)
     PrintFormated("q", "e", "g^((p-1)/q^e)", "h^((p-1)/q^e)", "Solve (g^((p-1)/q^e))^x = h^((p-1)/q^e) for x")
 
     for i in xrange(len(CountOccurencesList)):
@@ -99,16 +99,16 @@ def PohlingHellman(g, h, p):
 
     # Resavamo sistem kongruencijskih jednacina i ispisujemo resenje
     print(" Solution x = %d" % ChineseRemainder(CongruenceList))
-    print("-"*88)
+    print("-"*90)
     print("\n")
 
 if __name__ == '__main__':
 
     print("\nPress CTRL + C to exit\n")
-    print("="*88)
+    print("="*90)
     print("Pohling-Hellman's algorithm for descrete logartihm")
     print("Formula : h ≡ g^x (mod p)")
-    print("="*88)
+    print("="*90)
     print("\n")
 
     #PohlingHellman(18, 2, 29) # resenje 11
@@ -135,5 +135,5 @@ if __name__ == '__main__':
                 PohlingHellman(h, g, p)
             except TypeError:
                 print(" The congruence %d ≡ %d^x (mod %d) has no solution " % (h, g, p))
-                print("-"*88)
+                print("-"*90)
                 print("\n")
