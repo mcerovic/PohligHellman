@@ -91,13 +91,13 @@ def PohlingHellman(g, h, p):
     for i in xrange(len(CountOccurencesList)):
         e1 = (h ** ((p - 1) / (CountOccurencesList[i][0] ** CountOccurencesList[i][1]))) % p # e1 = g^((p-1)/q^e)
         e2 = (g ** ((p - 1) / (CountOccurencesList[i][0] ** CountOccurencesList[i][1]))) % p # e2 = h^((p-1)/q^e)
-        # Dodajemo novu kongruencijsku jednacinu
+        # Add new congruence
         CongruenceList.append(CongruencePair(g, h, p, CountOccurencesList[i][0], CountOccurencesList[i][1], e1, e2))
         e3 = CongruenceList[len(CongruenceList) - 1][0] % CongruenceList[len(CongruenceList) - 1][1] # e3 = (g^((p-1)/q^e))^x
         e4 = CongruenceList[len(CongruenceList) - 1][1] # e4 = h^((p-1)/q^e)
         PrintFormated(CountOccurencesList[i][0], CountOccurencesList[i][1], e1, e2, "x ≡ %2d (mod %2d)" % (e3, e4))
 
-    # Resavamo sistem kongruencijskih jednacina i ispisujemo resenje
+    # Solve the system of congruences
     print(" Solution x = %d" % ChineseRemainder(CongruenceList))
     print("-"*90)
     print("\n")
@@ -111,14 +111,15 @@ if __name__ == '__main__':
     print("="*90)
     print("\n")
 
-    #PohlingHellman(18, 2, 29) # resenje 11
-    #PohlingHellman(166, 7, 433) # resenje 47
-    #PohlingHellman(7531, 6, 8101) # resenje 6689
-    #PohlingHellman(525, 3, 809) # resenje 309
-    #PohlingHellman(12, 7, 41) # resnje 13
-    #PohlingHellman(70, 2, 131) # resnje 13
-    #PohlingHellman(525, 2, 809) # nema resenja
-    # PohlingHellman(525, -2, 131) # resenje 0
+    # TEST EXAMPLES(h, g, p)         SOLUTIONS
+    #PohlingHellman(18, 2, 29)          11
+    #PohlingHellman(166, 7, 433)        47
+    #PohlingHellman(7531, 6, 8101)      6689
+    #PohlingHellman(525, 3, 809)        309
+    #PohlingHellman(12, 7, 41)          13
+    #PohlingHellman(70, 2, 131)         13
+    #PohlingHellman(525, 2, 809)        no solution
+    #PohlingHellman(525, -2, 131)       0
 
     while True:
         err = False
